@@ -17,10 +17,14 @@ public class SnakeController implements EventListener {
         snakeModel.setEventListener(this);
     }
 
-    @Override
-    public void move(Direction direction) {
-        snakeModel.move(direction);
+    public void move() {
+        snakeModel.move();
         snakeView.update();
+    }
+
+    @Override
+    public void setDirection(Direction direction) {
+        snakeModel.setDirection(direction);
     }
 
     @Override

@@ -40,19 +40,19 @@ public class GameField extends JPanel {
             switch (e.getKeyCode()){
                 case VK_LEFT:
                 case VK_A:
-                    eventListener.move(Direction.LEFT);
+                    eventListener.setDirection(Direction.LEFT);
                     break;
                 case VK_RIGHT:
                 case VK_D:
-                    eventListener.move(Direction.RIGHT);
+                    eventListener.setDirection(Direction.RIGHT);
                     break;
                 case VK_UP:
                 case VK_W:
-                    eventListener.move(Direction.UP);
+                    eventListener.setDirection(Direction.UP);
                     break;
                 case VK_DOWN:
                 case VK_S:
-                    eventListener.move(Direction.DOWN);
+                    eventListener.setDirection(Direction.DOWN);
                     break;
             }
         }

@@ -23,4 +23,8 @@ public class SnakeView extends JFrame {
         setVisible(true);
         setResizable(false);
     }
+
+    public void update(){
+        field.repaint();
+    }
 }

@@ -27,16 +27,15 @@ public class GameField extends JPanel {
     public void paint(Graphics graphics){
         graphics.setColor(Color.lightGray);
         graphics.fillRect(0, 0, snakeView.getWidth(), snakeView.getHeight());
-
         Snake snake = snakeView.getGameObjects().getSnake();
-        snake.draw(graphics);
-
         List<Rabbit> rabbits = snakeView.getGameObjects().getRabbits();
-
         for (Rabbit rabbit :
                 rabbits) {
             rabbit.draw(graphics);
         }
+        snake.draw(graphics);
+        graphics.setColor(Color.magenta);
+        graphics.drawString("Score: " + (snake.size() - 3), 0, 10);
     }
 
     public void setEventListener(EventListener eventListener) {
@@ -62,6 +61,9 @@ public class GameField extends JPanel {
                 case VK_DOWN:
                 case VK_S:
                     eventListener.setDirection(Direction.DOWN);
+                    break;
+                case VK_R:
+                    eventListener.restart();
                     break;
             }
         }

@@ -20,12 +20,12 @@ public class SnakeView extends JFrame {
         add(gameField);
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        int size = ModelSettings.GAME_FIELD_SIZE  + ModelSettings.CELL_SIZE / 2;
+        int size = ModelSettings.GAME_FIELD_SIZE;
         setSize(size, size);
         setLocationRelativeTo(null);
         setTitle("Snake game");
         setVisible(true);
-        setResizable(false);
+        //setResizable(false);
     }
 
     public void update(){

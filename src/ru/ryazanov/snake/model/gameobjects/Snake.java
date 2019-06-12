@@ -12,6 +12,7 @@ import java.util.List;
 public class Snake implements Moveble, Drawable {
     private List<Section> sections;
     private boolean isAlive = true;
+    private boolean eatMouse = false;
 
     public Snake() {
         sections = new ArrayList<>();
@@ -40,7 +41,10 @@ public class Snake implements Moveble, Drawable {
                 break;
         }
 
-        sections.remove(sections.size() - 1);
+        if (!eatMouse)
+            sections.remove(sections.size() - 1);
+        else
+            eatMouse = false;
 
         checkBorders(sections.get(0));
         checkBodySnake();
@@ -62,8 +66,8 @@ public class Snake implements Moveble, Drawable {
 
     private void checkBorders(Section headSnake){
         if (headSnake.getX() < 0 || headSnake.getY() < 0
-                || headSnake.getX() > (ModelSettings.GAME_FIELD_SIZE + ModelSettings.CELL_SIZE / 2 )
-                || headSnake.getY() > ModelSettings.GAME_FIELD_SIZE + ModelSettings.CELL_SIZE / 2 )
+                || headSnake.getX() > (ModelSettings.GAME_FIELD_SIZE - ModelSettings.CELL_SIZE * 2)
+                || headSnake.getY() > (ModelSettings.GAME_FIELD_SIZE - ModelSettings.CELL_SIZE * 3))
             isAlive = false;
     }
 
@@ -77,5 +81,17 @@ public class Snake implements Moveble, Drawable {
     }
     public boolean isAlive() {
         return isAlive;
+    }
+
+    public Section getHead(){
+        return sections.get(0);
+    }
+
+    public void eatMouse(){
+        eatMouse = true;
+    }
+
+    public List<Section> getSections() {
+        return sections;
     }
 }

@@ -14,7 +14,7 @@ public class Runner extends Thread {
                 snakeController.move();
                 int speed = snakeController.snakeLength() > ControllerSettings.MAX_SIZE_SNAKE_SPEED ?
                             ControllerSettings.START_SNAKE_SPEED - ControllerSettings.MAX_SIZE_SNAKE_SPEED * ControllerSettings.SPEED_INCREASE :
-                            ControllerSettings.START_SNAKE_SPEED - ControllerSettings.MAX_SIZE_SNAKE_SPEED * snakeController.snakeLength();
+                            ControllerSettings.START_SNAKE_SPEED - snakeController.snakeLength() * ControllerSettings.SPEED_INCREASE;
                 sleep(speed);
             }
         } catch (InterruptedException e) {

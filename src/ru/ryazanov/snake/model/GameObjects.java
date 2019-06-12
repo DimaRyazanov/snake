@@ -1,5 +1,6 @@
 package ru.ryazanov.snake.model;
 
+import ru.ryazanov.snake.model.constant.ModelSettings;
 import ru.ryazanov.snake.model.gameobjects.Rabbit;
 import ru.ryazanov.snake.model.gameobjects.Section;
 import ru.ryazanov.snake.model.gameobjects.Snake;
@@ -18,8 +19,9 @@ public class GameObjects {
     public void restartGame(){
         snake = new Snake();
         rabbits = new ArrayList<>();
-        rabbits.add(new Rabbit());
-        rabbits.add(new Rabbit());
+        for (int i = 0; i < ModelSettings.COUNT_RABBITS; i++) {
+            rabbits.add(new Rabbit());
+        }
     }
 
     public Snake getSnake() {

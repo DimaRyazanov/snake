@@ -25,7 +25,7 @@ public class SnakeView extends JFrame {
         setLocationRelativeTo(null);
         setTitle("Snake game");
         setVisible(true);
-        //setResizable(false);
+        setResizable(false);
     }
 
     public void update(){

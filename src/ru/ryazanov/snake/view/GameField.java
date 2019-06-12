@@ -2,12 +2,14 @@ package ru.ryazanov.snake.view;
 
 import ru.ryazanov.snake.controller.EventListener;
 import ru.ryazanov.snake.model.constant.Direction;
+import ru.ryazanov.snake.model.gameobjects.Rabbit;
 import ru.ryazanov.snake.model.gameobjects.Snake;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 import static java.awt.event.KeyEvent.*;
 
@@ -28,6 +30,13 @@ public class GameField extends JPanel {
 
         Snake snake = snakeView.getGameObjects().getSnake();
         snake.draw(graphics);
+
+        List<Rabbit> rabbits = snakeView.getGameObjects().getRabbits();
+
+        for (Rabbit rabbit :
+                rabbits) {
+            rabbit.draw(graphics);
+        }
     }
 
     public void setEventListener(EventListener eventListener) {

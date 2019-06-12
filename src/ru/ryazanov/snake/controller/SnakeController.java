@@ -13,6 +13,7 @@ public class SnakeController implements EventListener {
         snakeModel = new SnakeModel();
         snakeView = new SnakeView(this);
         snakeView.init();
+        snakeModel.restart();
         snakeView.setEventListener(this);
         snakeModel.setEventListener(this);
     }
@@ -29,10 +30,15 @@ public class SnakeController implements EventListener {
 
     @Override
     public void restart() {
-
+        snakeModel.restart();
+        snakeView.update();
     }
 
     public GameObjects getGameObjects(){
         return snakeModel.getGameObjects();
+    }
+
+    public int snakeLength(){
+        return snakeModel.getSnakeLength();
     }
 }

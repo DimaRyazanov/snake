@@ -1,6 +1,7 @@
 package ru.ryazanov.snake.model.gameobjects;
 
-import ru.ryazanov.snake.model.Moveble;
+import ru.ryazanov.snake.model.Interfaces.Drawable;
+import ru.ryazanov.snake.model.Interfaces.Moveble;
 import ru.ryazanov.snake.model.constant.Direction;
 import ru.ryazanov.snake.model.constant.ModelSettings;
 
@@ -8,14 +9,18 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Snake implements Moveble {
+public class Snake implements Moveble, Drawable {
     private List<Section> sections;
+    private boolean isAlive = true;
 
     public Snake() {
         sections = new ArrayList<>();
+
         sections.add(new Section(ModelSettings.START_POSITION_X, ModelSettings.START_POSITION_Y));
-        sections.add(new Section(ModelSettings.START_POSITION_X, ModelSettings.START_POSITION_Y + ModelSettings.CELL_SIZE));
-        sections.add(new Section(ModelSettings.START_POSITION_X, ModelSettings.START_POSITION_Y + ModelSettings.CELL_SIZE * 2));
+
+        for (int i = 1; i < ModelSettings.START_SNAKE_SIZE; i++) {
+            sections.add(new Section(ModelSettings.START_POSITION_X, ModelSettings.START_POSITION_Y + ModelSettings.CELL_SIZE * i));
+        }
     }
 
     public void move(Direction direction) {
@@ -36,8 +41,12 @@ public class Snake implements Moveble {
         }
 
         sections.remove(sections.size() - 1);
+
+        checkBorders(sections.get(0));
+        checkBodySnake();
     }
 
+    @Override
     public void draw(Graphics graphics) {
         graphics.setColor(Color.red);
         sections.get(0).draw(graphics);
@@ -45,5 +54,28 @@ public class Snake implements Moveble {
         for (int i = 1; i < sections.size(); i++) {
             sections.get(i).draw(graphics);
         }
+    }
+
+    public int size(){
+        return sections.size();
+    }
+
+    private void checkBorders(Section headSnake){
+        if (headSnake.getX() < 0 || headSnake.getY() < 0
+                || headSnake.getX() > (ModelSettings.GAME_FIELD_SIZE + ModelSettings.CELL_SIZE / 2 )
+                || headSnake.getY() > ModelSettings.GAME_FIELD_SIZE + ModelSettings.CELL_SIZE / 2 )
+            isAlive = false;
+    }
+
+    private void checkBodySnake(){
+        Section head = sections.get(0);
+
+        for (int i = 1; i < sections.size(); i++) {
+            if (head.equals(sections.get(i)))
+                isAlive = false;
+        }
+    }
+    public boolean isAlive() {
+        return isAlive;
     }
 }

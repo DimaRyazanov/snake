@@ -3,6 +3,7 @@ package ru.ryazanov.snake.model.gameobjects;
 import ru.ryazanov.snake.model.constant.ModelSettings;
 
 import java.awt.*;
+import java.util.Objects;
 
 public abstract class GameObject {
     private int x;
@@ -40,4 +41,20 @@ public abstract class GameObject {
     }
 
     public abstract void draw(Graphics graphics);
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        GameObject that = (GameObject) o;
+        return x == that.x &&
+                y == that.y &&
+                width == that.width &&
+                height == that.height;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y, width, height);
+    }
 }

@@ -12,4 +12,6 @@ public class Section extends GameObject {
         graphics.drawRect(getX(), getY(), getWidth(), getHeight());
         graphics.fillRect(getX(), getY(), getWidth(), getHeight());
     }
+
+
 }

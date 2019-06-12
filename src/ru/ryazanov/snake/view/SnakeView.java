@@ -3,6 +3,7 @@ package ru.ryazanov.snake.view;
 import ru.ryazanov.snake.controller.EventListener;
 import ru.ryazanov.snake.controller.SnakeController;
 import ru.ryazanov.snake.model.GameObjects;
+import ru.ryazanov.snake.model.constant.ModelSettings;
 
 import javax.swing.*;
 
@@ -19,7 +20,8 @@ public class SnakeView extends JFrame {
         add(gameField);
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setSize(600, 600);
+        int size = ModelSettings.GAME_FIELD_SIZE  + ModelSettings.CELL_SIZE / 2;
+        setSize(size, size);
         setLocationRelativeTo(null);
         setTitle("Snake game");
         setVisible(true);

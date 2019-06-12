@@ -17,7 +17,7 @@ public class GameField extends JPanel {
     private SnakeView snakeView;
     private EventListener eventListener;
 
-    public GameField(SnakeView snakeView) {
+    GameField(SnakeView snakeView) {
         this.snakeView = snakeView;
         KeyHandler keyHandler = new KeyHandler();
         addKeyListener(keyHandler);
@@ -38,7 +38,7 @@ public class GameField extends JPanel {
         graphics.drawString("Score: " + (snake.size() - 3), 0, 10);
     }
 
-    public void setEventListener(EventListener eventListener) {
+    void setEventListener(EventListener eventListener) {
         this.eventListener = eventListener;
     }
 

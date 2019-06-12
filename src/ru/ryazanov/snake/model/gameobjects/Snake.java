@@ -1,7 +1,7 @@
 package ru.ryazanov.snake.model.gameobjects;
 
 import ru.ryazanov.snake.model.Interfaces.Drawable;
-import ru.ryazanov.snake.model.Interfaces.Moveble;
+import ru.ryazanov.snake.model.Interfaces.Movable;
 import ru.ryazanov.snake.model.constant.Direction;
 import ru.ryazanov.snake.model.constant.ModelSettings;
 
@@ -9,7 +9,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Snake implements Moveble, Drawable {
+public class Snake implements Movable, Drawable {
     private List<Section> sections;
     private boolean isAlive = true;
     private boolean eatMouse = false;

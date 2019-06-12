@@ -21,12 +21,16 @@ public class SnakeModel {
     public void move() {
         Snake snake = gameObjects.getSnake();
         List<Rabbit> rabbits = gameObjects.getRabbits();
-        for (int i = 0; i < rabbits.size(); i++) {
-            if (rabbits.get(i).getBody().equals(snake.getHead())){
+        Rabbit eatableMouse = null;
+        for (Rabbit rabbit : rabbits) {
+            if (rabbit.getBody().equals(snake.getHead())) {
                 snake.eatMouse();
-                gameObjects.eatMouse(rabbits.get(i));
+                eatableMouse = rabbit;
+                break;
             }
         }
+        if (eatableMouse != null)
+            gameObjects.eatMouse(eatableMouse);
         snake.move(direction);
         if (!snake.isAlive())
             eventListener.restart();
@@ -37,8 +41,7 @@ public class SnakeModel {
     }
 
     public void setDirection(Direction direction) {
-        Direction changeDirection = Direction.canChangeDirection(direction, this.direction);
-        this.direction = changeDirection;
+        this.direction = Direction.canChangeDirection(direction, this.direction);
     }
 
     public int getSnakeLength() {

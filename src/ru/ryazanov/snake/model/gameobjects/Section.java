@@ -11,24 +11,24 @@ public class Section {
     private int width = ModelSettings.CELL_SIZE;
     private int height = ModelSettings.CELL_SIZE;
 
-    public Section(int x, int y) {
+    Section(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public int getX() {
+    int getX() {
         return x;
     }
 
-    public int getY() {
+    int getY() {
         return y;
     }
 
-    public int getWidth() {
+    private int getWidth() {
         return width;
     }
 
-    public int getHeight() {
+    private int getHeight() {
         return height;
     }
 
@@ -40,7 +40,7 @@ public class Section {
         this.y = y;
     }
 
-    public void draw(Graphics graphics) {
+    void draw(Graphics graphics) {
         graphics.drawRect(getX(), getY(), getWidth(), getHeight());
         graphics.fillRect(getX(), getY(), getWidth(), getHeight());
     }

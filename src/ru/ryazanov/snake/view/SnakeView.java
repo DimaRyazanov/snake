@@ -36,7 +36,7 @@ public class SnakeView extends JFrame {
         gameField.setEventListener(eventListener);
     }
 
-    public GameObjects getGameObjects(){
+    GameObjects getGameObjects(){
         return snakeController.getGameObjects();
     }
 }

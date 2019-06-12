@@ -18,7 +18,7 @@ public class SnakeController implements EventListener {
         snakeModel.setEventListener(this);
     }
 
-    public void move() {
+    void move() {
         snakeModel.move();
         snakeView.update();
     }
@@ -38,7 +38,7 @@ public class SnakeController implements EventListener {
         return snakeModel.getGameObjects();
     }
 
-    public int snakeLength(){
+    int snakeLength(){
         return snakeModel.getSnakeLength();
     }
 }

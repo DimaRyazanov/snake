@@ -12,11 +12,11 @@ public class GameObjects {
     private Snake snake;
     private List<Rabbit> rabbits;
 
-    public GameObjects() {
+    GameObjects() {
         restartGame();
     }
 
-    public void restartGame(){
+    void restartGame(){
         snake = new Snake();
         rabbits = new ArrayList<>();
         for (int i = 0; i < ModelSettings.COUNT_RABBITS; i++) {
@@ -32,7 +32,7 @@ public class GameObjects {
         return rabbits;
     }
 
-    public void eatMouse(Rabbit rabbit) {
+    void eatMouse(Rabbit rabbit) {
         Rabbit newRabbit = new Rabbit();
         if (checkSnake(newRabbit) || checkAnotherRabbit(newRabbit))
             eatMouse(rabbit);
